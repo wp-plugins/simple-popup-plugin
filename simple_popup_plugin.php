@@ -8,7 +8,6 @@ Author: Garrett Grimm
 Author URI: http://www.grimmdude.com
 */
 ?>
-
 <?php
 /*  Copyright 2009  Garrett Grimm  (email : music@grimmdude.com)
 
@@ -27,7 +26,6 @@ Author URI: http://www.grimmdude.com
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 ?>
-
 <?php
 
 //Javascript to be placed in header.php
@@ -51,12 +49,10 @@ function popitup(url) {
 ";
 }
 ?>
-
 <?php
 //inserts script in head of document
 add_action ( 'wp_head', 'popup_plugin_script' );
 ?>
-
 <?php
 //Options page
 add_action('admin_menu', 'simple_popup_menu');
@@ -70,7 +66,6 @@ function simple_popup_options() {
 }
 
 ?>
-
 <?php
 //defines shortcode
 add_shortcode('popup', 'popup_plugin_shortcode');
@@ -83,8 +78,3 @@ function popup_plugin_shortcode( $atts, $content = null ) {
     return '<a onclick="return popitup(\''.output_popup_url().'\')" href="'.output_popup_url().'">' .$content. '</a>';}
 
 ?>
-
-
-
-
- 
