@@ -32,9 +32,7 @@ Template Name: XSPF Music Player Popup
 
 <?php wp_get_archives('type=monthly&format=link'); ?>
 
-<?php 
-//This displays the Simple Popup Plugin script
-popup_plugin_script(); ?>
+<?php wp_head(); ?>
 
 </head>
 <body>
