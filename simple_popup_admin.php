@@ -1,7 +1,7 @@
 <div class="wrap">
 <h2>Simple Popup Plugin</h2>
-<p>This is version 3.0 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback & Help" target="_blank">Feedback & Help</a> |  
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2847328" title="Donate" target="_blank">Donate</a>
+<p>This is version 3.1 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback & Help" target="_blank">Feedback & Help</a> |  
+<a href="http://www.grimmdude.com/donate" title="Donate" target="_blank">Donate</a>
 </p>
 
 <form method="post" action="options.php">
@@ -12,7 +12,7 @@
 <tr valign="top">
 <th scope="row">URL to be Popped Up!:<br /> ( start with http:// )</th>
 <td><font 
-style="BACKGROUND-COLOR: yellow">This option no longer exists.  From now on use the new shortcode or template tag to indicate the url (see below).  Apologies to those who need to change their posts and templates.  It's better this way I promise.</font></td>
+style="BACKGROUND-COLOR: yellow">This option no longer exists.  From now on use the new shortcode or template tag to indicate the url (see below).  Apologies to those who need to change their post and template tags from previous versions.  It's better this way I promise.  <b>For the widget, please asign URL at the widget page.</b></font></td>
 </tr>
 
 <tr valign="top">
@@ -53,7 +53,7 @@ style="BACKGROUND-COLOR: yellow">This option no longer exists.  From now on use 
 </table>
 
 <input type="hidden" name="action" value="update" />
-<input type="hidden" name="page_options" value="popup_window_url,popup_window_height,popup_window_width,popup_window_top,popup_window_left,popup_scrollbar,popup_window_toolbar,popup_window_location" />
+<input type="hidden" name="page_options" value="popup_window_height,popup_window_width,popup_window_top,popup_window_left,popup_scrollbar,popup_window_toolbar,popup_window_location" />
 
 <p class="submit">
 <input type="submit" name="Submit" value="<?php _e('Save Changes') ?>" />
@@ -64,6 +64,7 @@ style="BACKGROUND-COLOR: yellow">This option no longer exists.  From now on use 
 <h3>Usage</h3>
 <ul><li>-To create a popup link in a post or page use this shortcode: <code>[popup url="http://www.popupurl.com"]Link Text Here[/popup]</code></li>
 <li>-To create a popup link in the sidebar,footer, header, etc. use this template tag: <code>&lt;?php simple_popup_link("http://www.popupurl.com","LINK TEXT HERE"); ?&gt;</code></li>
+<li>-There's also an easy to use widget, so don't forget about it!</li>
 <li><u>**Always use "http://" in your urls</u></li>
 </ul><br />
 <p>

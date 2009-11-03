@@ -3,7 +3,7 @@
 Plugin Name: Simple Popup Plugin
 Plugin URI: http://www.grimmdude.com/wordpress-simple-popup-plugin
 Description: This plugin makes it easy to create a simple, modifiable popup window.  Version 3.0 is even simpler and supports multiple popups as well as window positioning.
-Version: 3.0
+Version: 3.1
 Author: Garrett Grimm
 Author URI: http://www.grimmdude.com
 */
@@ -105,4 +105,99 @@ function popup_plugin_shortcode( $atts, $content = null ) {
 //defines tag for theme templates
 function simple_popup_link($templateurl,$link_text) {
    echo "<a onclick=\"return popitup('"; echo $templateurl; echo "')\" href=\""; echo $templateurl; echo "\">"; echo $link_text; echo "</a>";}
+
+//widget content
+
+$spptext = get_option("popup_widget_text");
+function popup_widget_content(){
+echo "<ul><li><a onclick=\"return popitup('"; echo get_option('popup_window_url'); echo "')\" href=\""; echo get_option('popup_window_url'); echo "\">"; echo get_option('popup_widget_text'); echo "</a></li></ul>";
+}
+
+//function for widget
+function simple_popup_widget($args){
+extract($args);
+
+  $spptitle = get_option("popup_widget_title");
+  if (!is_array( $spptitle ))
+	{
+		$spptitle = array(
+      'title' => 'Simple Popup Plugin'
+      );
+  }      
+
+  echo $before_widget;
+    echo $before_title;
+      echo $spptitle['title'];
+    echo $after_title;
+    //Widget Content
+    popup_widget_content();
+  echo $after_widget;
+}
+
+//widget controls
+function simple_popup_widget_control(){ 
+
+$spptitle = get_option("popup_widget_title");
+$spptext = get_option("popup_widget_text");
+$sppurl = get_option("popup_window_url");
+
+  if (!is_array( $spptitle ))
+	{
+		$spptitle = array(
+      'title' => 'Simple Popup Plugin'
+      );
+  }      
+//widget title option
+  if ($_POST['popup_widget_title-Submit'])
+  {
+    $spptitle['title'] = htmlspecialchars($_POST['popup_widget_title-WidgetTitle']);
+
+    update_option("popup_widget_title", $spptitle);
+    
+  }
+  
+  
+//linktext option
+ if ($_POST['popup_widget_text-Submit'])
+  {
+    $spptext = htmlspecialchars($_POST['popup_widget_text']);
+
+    update_option("popup_widget_text", $spptext);
+  }
+  
+  //url option
+ if ($_POST['popup_window_url-Submit'])
+  {
+    $sppurl = htmlspecialchars($_POST['popup_window_url']);
+
+    update_option("popup_window_url", $sppurl);
+  }
+//options form
+?>
+  <p>
+    <label for="spptitle-WidgetTitle">Box Title:</label>
+    <input type="text" id="popup_widget_title-WidgetTitle" class="widefat" name="popup_widget_title-WidgetTitle" value="<?php echo $spptitle['title'];?>" />
+    <input type="hidden" id="popup_widget_title-Submit" name="popup_widget_title-Submit" value="1" />
+  </p>
+ <p>
+    <label for="popuplinktext">Popup Link Text:</label>
+    <input type="text" id="popup_widget_text" class="widefat" name="popup_widget_text" value="<?php echo $spptext;?>" />
+    <input type="hidden" id="popup_widget_text-Submit" name="popup_widget_text-Submit" value="1" />
+    </p>
+    <p>
+    <label for="popuplinktext">Popup Link URL (start with http://):</label>
+    <input type="text" id="popup_window_url" name="popup_window_url" class="widefat" value="<?php echo get_option('popup_window_url'); ?>" />
+    <input type="hidden" id="popup_window_url-Submit" name="popup_window_url-Submit" value="1" />  
+  </p>
+<?php
+
+}
+//function to register widget and controls
+function simple_popup_widget_init(){
+    register_sidebar_widget(__('Simple Popup Plugin'), 'simple_popup_widget');
+    register_widget_control(   'Simple Popup Plugin', 'simple_popup_widget_control', 300, 200 );
+}
+
+
+add_action("widgets_init", "simple_popup_widget_init");
 ?>
