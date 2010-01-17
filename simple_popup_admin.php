@@ -1,6 +1,7 @@
 <div class="wrap">
 <h2>Simple Popup Plugin</h2>
-<p>This is version 3.1 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback & Help" target="_blank">Feedback & Help</a> |  
+<small>By <a href="http://www.grimmdude.com" title="www.grimmdude.com" target="_blank">Garrett Grimm</a> and <a href="http://ryowebsite.com/" title="http://ryowebsite.com" target="_blank">Rich Hamilton</a></small>
+<p>This is version 3.2 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback & Help" target="_blank">Feedback & Help</a> |  
 <a href="http://www.grimmdude.com/donate" title="Donate" target="_blank">Donate</a>
 </p>
 
@@ -8,12 +9,6 @@
 <?php wp_nonce_field('update-options'); ?>
 
 <table class="form-table">
-
-<tr valign="top">
-<th scope="row">URL to be Popped Up!:<br /> ( start with http:// )</th>
-<td><font 
-style="BACKGROUND-COLOR: yellow">This option no longer exists.  From now on use the new shortcode or template tag to indicate the url (see below).  Apologies to those who need to change their post and template tags from previous versions.  It's better this way I promise.  <b>For the widget, please asign URL at the widget page.</b></font></td>
-</tr>
 
 <tr valign="top">
 <th scope="row">Popup Window Height (px):</th>
@@ -25,6 +20,12 @@ style="BACKGROUND-COLOR: yellow">This option no longer exists.  From now on use 
 <td><input type="text" name="popup_window_width" value="<?php if (get_option('popup_window_width')==null) {echo 500;} else {echo get_option('popup_window_width');} ?>" /></td>
 </tr>
 
+
+<tr valign="top">
+<th scope="row"><i>To center the popup window, set both distance from top/left to 0</i></th>
+<td></td>
+</tr>
+
 <tr valign="top">
 <th scope="row">Distance from Top (px):</th>
 <td><input type="text" name="popup_window_top" value="<?php if (get_option('popup_window_top')==null) {echo 0;} else {echo get_option('popup_window_top');} ?>" /></td>
@@ -34,6 +35,7 @@ style="BACKGROUND-COLOR: yellow">This option no longer exists.  From now on use 
 <th scope="row">Distance from Left (px):</th>
 <td><input type="text" name="popup_window_left" value="<?php if (get_option('popup_window_left')==null) {echo 0;} else {echo get_option('popup_window_left');} ?>" /></td>
 </tr>
+
 
 <tr valign="top">
 <th scope="row">Scroll Bars:</th>
@@ -68,5 +70,5 @@ style="BACKGROUND-COLOR: yellow">This option no longer exists.  From now on use 
 <li><u>**Always use "http://" in your urls</u></li>
 </ul><br />
 <p>
-<i>Written by <a href="http://www.grimmdude.com" title="Garrett Grimm" target="_blank">Garrett Grimm</a> in <a href="http://www.anamericangirlinchina.com" title="My girl's Shanghai blog" target="_blank">Shanghai, China</a>.
+<i>Written in <a href="http://www.anamericangirlinchina.com" title="My girl's Shanghai blog" target="_blank">Shanghai, China</a>.
 </div>

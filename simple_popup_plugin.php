@@ -2,13 +2,12 @@
 /*
 Plugin Name: Simple Popup Plugin
 Plugin URI: http://www.grimmdude.com/wordpress-simple-popup-plugin
-Description: This plugin makes it easy to create a simple, modifiable popup window.  Version 3.0 is even simpler and supports multiple popups as well as window positioning.
-Version: 3.1
+Description: This plugin makes it easy to create a simple, modifiable popup window.  Version 4.0 supports multiple popups, window positioning, and a widget that can be installed with multiple instances. Requires WordPress 2.8
+Version: 4.1
 Author: Garrett Grimm
 Author URI: http://www.grimmdude.com
 */
-?>
-<?php
+
 /*  Copyright 2009  Garrett Grimm  (email : music@grimmdude.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -25,28 +24,37 @@ Author URI: http://www.grimmdude.com
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-?>
-<?php
-//Javascript to be placed in header.php
 
+//Javascript to be placed in header.php
 function popup_plugin_script(){
+    $width=(get_option('popup_window_width')==null)?'750':get_option('popup_window_width');
+    $height=(get_option('popup_window_height')==null)?'550':get_option('popup_window_height');
+    $myleft=(get_option('popup_window_left')==null || (get_option('popup_window_left')==0)) ? '0' : get_option('popup_window_left');
+    $mytop=(get_option('popup_window_top')==null || (get_option('popup_window_top')==0))  ? '0' : get_option('popup_window_top');
+    $scrollbar=(get_option('popup_scrollbar')==1) ? "yes" : "no";
+    $toolbar=(get_option('popup_window_toolbar')==1) ? "yes" : "no";
+    $location=(get_option('popup_window_location')==1) ? "yes" : "no";
     echo "
-    
-    <!--Simple Popup Plugin v3-->
+<!--Simple Popup Plugin v3.2 / RH Mods-->
 <script language=\"javascript\" type=\"text/javascript\">
 <!--
-function popitup(url) {
-	newwindow=window.open(url,'name','height="; if (get_option('popup_window_height')==null) {echo 500;} else {echo get_option('popup_window_height');} 
-	echo ",width="; if (get_option('popup_window_width')==null) {echo 500;} else {echo get_option('popup_window_width');} echo ",top="; if (get_option('popup_window_top')==null) {echo 0;} else {echo get_option('popup_window_top');} 
-	echo ",left="; if (get_option('popup_window_left')==null) {echo 0;} else {echo get_option('popup_window_left');} call_scrollbar(); call_popup_toolbar(); call_popup_location(); echo "');
-	if (window.focus) {newwindow.focus()}
-	return false;
+var swin=null;
+function popitup(mypage,w,h,pos,myname,infocus){
+    if (w!=parseInt(w)||w<=0) w=$width;
+    if (h!=parseInt(h)||h<=0) h=$height;
+    if (myname==null){myname=\"swin\"};
+    myleft=$myleft;
+    mytop=$mytop;
+    if (myleft==0 && mytop==0 && pos!=\"random\"){pos=\"center\"};
+    if (pos==\"random\"){myleft=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;mytop=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
+    if (pos==\"center\"){myleft=(screen.width)?(screen.width-w)/2:100;mytop=(screen.height)?(screen.height-h)/2:100;}
+    settings=\"width=\" + w + \",height=\" + h + \",top=\" + mytop + \",left=\" + myleft + \",scrollbars=$scrollbar,location=$location,directories=no,status=no,menubar=no,toolbar=$toolbar,resizable=no\";swin=window.open(mypage,myname,settings);
+    if (infocus==null || infocus==\"front\"){swin.focus()};
+    return false;
 }
-
 // -->
 </script>
 <!--/Simple Popup Plugin-->
-
 ";
 }
 
@@ -57,39 +65,11 @@ add_action ( 'wp_head', 'popup_plugin_script' );
 add_action('admin_menu', 'simple_popup_menu');
 
 function simple_popup_menu() {
-  add_options_page('Simple Popup Plugin Options', 'Simple Popup Plugin', 8, __FILE__, 'simple_popup_options');
+    add_options_page('Simple Popup Plugin Options', 'Simple Popup Plugin', 8, __FILE__, 'simple_popup_options');
 }
 
 function simple_popup_options() {
     include 'simple_popup_admin.php';
-}
-
-
-//scrollbar call function
-function call_scrollbar() {
-$scrollbar=get_option('popup_scrollbar');
-if ( $scrollbar == 1 ) {
-	echo ",scrollbars=1";
-}
-echo "";
-}
-
-//toolbar call function
-function call_popup_toolbar() {
-$toolbar=get_option('popup_window_toolbar');
-if ( $toolbar == 1 ) {
-	echo ",toolbar=1";
-}
-echo "";
-}
-
-//location bar call function
-function call_popup_location() {
-$location=get_option('popup_window_location');
-if ( $location == 1 ) {
-	echo ",location=1";
-}
-echo "";
 }
 
 //defines shortcode
@@ -97,107 +77,103 @@ add_shortcode('popup', 'popup_plugin_shortcode');
 
 //echo the popup url for shortcode
 function output_popup_url() {
-return get_option('popup_window_url');}
-
+    return get_option('popup_window_url');
+}
 function popup_plugin_shortcode( $atts, $content = null ) {
-    return '<a onclick="return popitup(\''.$atts['url'].'\')" href="'.$atts['url'].'">' .$content. '</a>';}
-    
+    return "<a href='{$atts['url']}' onClick='return popitup(this.href);' target='_blank'>$content</a>";    
+}
+
 //defines tag for theme templates
 function simple_popup_link($templateurl,$link_text) {
-   echo "<a onclick=\"return popitup('"; echo $templateurl; echo "')\" href=\""; echo $templateurl; echo "\">"; echo $link_text; echo "</a>";}
-
-//widget content
-
-$spptext = get_option("popup_widget_text");
-function popup_widget_content(){
-echo "<ul><li><a onclick=\"return popitup('"; echo get_option('popup_window_url'); echo "')\" href=\""; echo get_option('popup_window_url'); echo "\">"; echo get_option('popup_widget_text'); echo "</a></li></ul>";
+    echo "<a href='$templateurl' onClick='return popitup(this.href);' target='_blank'>$link_text</a>";    
 }
 
-//function for widget
-function simple_popup_widget($args){
-extract($args);
+/**
+ * Pages widget class
+ *
+ * @since 2.8.0
+ */
+class simple_popup_Widget extends WP_Widget {
 
-  $spptitle = get_option("popup_widget_title");
-  if (!is_array( $spptitle ))
-	{
-		$spptitle = array(
-      'title' => 'Simple Popup Plugin'
-      );
-  }      
+    function simple_popup_Widget() {
+        $widget_ops = array('classname' => 'widget_simple_popup', 'description' => __( 'Simple Popup Plugin') );
+        $this->WP_Widget('simple_popup', __('Popup Links'), $widget_ops);
+    }
 
-  echo $before_widget;
-    echo $before_title;
-      echo $spptitle['title'];
-    echo $after_title;
-    //Widget Content
-    popup_widget_content();
-  echo $after_widget;
+    function widget( $args, $instance ) {
+        extract( $args );
+        $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'height' => 550, 'width' => 750, 'clicktext'=>'Click Here', 'url'=>'') );
+        $title = apply_filters('widget_title', $instance['title']);
+        $out='';
+        if ( $instance['urls'] ) {
+            $urls = unserialize( $instance['urls'] );
+            if (is_array($urls)) {
+                foreach ($urls as $pop) {
+                    if ( !empty( $pop['url'] ) ) {
+                        $out .= "<li><a href='{$pop['url']}' onClick='return popitup(this.href,{$pop['width']},{$pop['height']});' target='_blank'>{$pop['clicktext']}</a></li>\n";
+                    }
+                }
+            }
+            if ($out) {
+                echo $before_widget;
+                if ($title) echo $before_title . $title . $after_title;
+                echo "\n<ul>\n$out\n</ul>\n";
+                echo $after_widget;
+            }
+        }
+    }
+
+    function update( $new_instance, $old_instance ) {
+        //$instance = $old_instance;
+        $instance['title'] = strip_tags($new_instance['title']);
+        $newurls=array();
+        $xnewurls=array();
+        if (is_array($new_instance['urls'])) {
+            foreach ( $new_instance['urls'] as $key => $val) {
+                $kk = explode('_',$key);
+                if ($kk[1]=='url' && !(empty($val)||substr($val,0,1)=='/'||substr(strtolower($val),0,4)=='http')) $val="http://$val";
+                $newurls[$kk[0]][$kk[1]]=$val;
+            }
+            foreach ($newurls as $url) {
+                if ($url['url']) $xnewurls[] = $url;
+            }
+        }
+        $instance['urls'] = serialize( $xnewurls );
+        return $instance;
+    }
+
+    function form( $instance ) {
+        $instance = wp_parse_args( (array) $instance, array( 'title' => '','urls'=>'') );
+        $title = esc_attr( $instance['title'] );
+        $urls = ($instance['urls'] != '') ? unserialize( $instance['urls'] ) : array();
+        $width=(get_option('popup_window_width')==null)?'750':get_option('popup_window_width');
+        $height=(get_option('popup_window_height')==null)?'550':get_option('popup_window_height');
+        $urls[]=array('clicktext'=>'Click Here', 'url'=>'', 'width' => $width, 'height' => $height);
+        echo '<p><label for="'.$this->get_field_id('title').'">'.__('Title:').'</label> <input class="widefat" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" type="text" value="'.$title."\" /></p><hr>\n";
+        $id=1;
+        foreach ($urls as $pop) {
+            $clicktext = esc_attr( $pop['clicktext'] );
+            $url = esc_attr( $pop['url'] );
+            $width = esc_attr( $pop['width'] );
+            $height = esc_attr( $pop['height'] );
+            echo "<div style='float:right;'><b>#$id</b></div>\n";
+            echo "<p><label for=\"".$this->get_field_id('urls')."[{$id}_clicktext]\">"._e('Link Text:')."</label>
+            <input class=\"widefat\" id=\"".$this->get_field_id('urls')."[{$id}_clicktext]\" name=\"".$this->get_field_name('urls')."[{$id}_clicktext]\" type=\"text\" value=\"$clicktext\" /></p>\n";
+            echo "<p><label for=\"".$this->get_field_id('urls')."[{$id}_url]\">"._e('URL:')."</label>
+            <input class=\"widefat\" id=\"".$this->get_field_id('urls')."[{$id}_url]\" name=\"".$this->get_field_name('urls')."[{$id}_url]\" type=\"text\" value=\"$url\" /></p>\n";
+            echo "<p>Width: <input size=\"4\" id=\"".$this->get_field_id('urls')."[{$id}_width]\" name=\"".$this->get_field_name('urls')."[{$id}_width]\" type=\"text\" value=\"$width\" />\n";
+            echo "&nbsp;&nbsp;Height: <input size=\"4\" id=\"".$this->get_field_id('urls')."[{$id}_height]\" name=\"".$this->get_field_name('urls')."[{$id}_height]\" type=\"text\" value=\"$height\" /></p>\n";
+            echo "<hr>\n";
+            $id++;
+        }
+        echo '<p><small>To Delete, clear URL and click Save.</small></p>';
+    }
+
 }
 
-//widget controls
-function simple_popup_widget_control(){ 
-
-$spptitle = get_option("popup_widget_title");
-$spptext = get_option("popup_widget_text");
-$sppurl = get_option("popup_window_url");
-
-  if (!is_array( $spptitle ))
-	{
-		$spptitle = array(
-      'title' => 'Simple Popup Plugin'
-      );
-  }      
-//widget title option
-  if ($_POST['popup_widget_title-Submit'])
-  {
-    $spptitle['title'] = htmlspecialchars($_POST['popup_widget_title-WidgetTitle']);
-
-    update_option("popup_widget_title", $spptitle);
-    
-  }
-  
-  
-//linktext option
- if ($_POST['popup_widget_text-Submit'])
-  {
-    $spptext = htmlspecialchars($_POST['popup_widget_text']);
-
-    update_option("popup_widget_text", $spptext);
-  }
-  
-  //url option
- if ($_POST['popup_window_url-Submit'])
-  {
-    $sppurl = htmlspecialchars($_POST['popup_window_url']);
-
-    update_option("popup_window_url", $sppurl);
-  }
-//options form
-?>
-  <p>
-    <label for="spptitle-WidgetTitle">Box Title:</label>
-    <input type="text" id="popup_widget_title-WidgetTitle" class="widefat" name="popup_widget_title-WidgetTitle" value="<?php echo $spptitle['title'];?>" />
-    <input type="hidden" id="popup_widget_title-Submit" name="popup_widget_title-Submit" value="1" />
-  </p>
- <p>
-    <label for="popuplinktext">Popup Link Text:</label>
-    <input type="text" id="popup_widget_text" class="widefat" name="popup_widget_text" value="<?php echo $spptext;?>" />
-    <input type="hidden" id="popup_widget_text-Submit" name="popup_widget_text-Submit" value="1" />
-    </p>
-    <p>
-    <label for="popuplinktext">Popup Link URL (start with http://):</label>
-    <input type="text" id="popup_window_url" name="popup_window_url" class="widefat" value="<?php echo get_option('popup_window_url'); ?>" />
-    <input type="hidden" id="popup_window_url-Submit" name="popup_window_url-Submit" value="1" />  
-  </p>
-<?php
-
+function simple_popup_Widget_init() {
+    register_widget('simple_popup_Widget');
 }
-//function to register widget and controls
-function simple_popup_widget_init(){
-    register_sidebar_widget(__('Simple Popup Plugin'), 'simple_popup_widget');
-    register_widget_control(   'Simple Popup Plugin', 'simple_popup_widget_control', 300, 200 );
-}
+add_action('init', 'simple_popup_Widget_init', 1);
 
-
-add_action("widgets_init", "simple_popup_widget_init");
 ?>

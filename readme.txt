@@ -1,16 +1,16 @@
 === Simple Popup Plugin ===
-Contributors: grimmdude
+Contributors: grimmdude, RichH
 Donate link: http://www.grimmdude.com/donate
 Tags: popup,simple,tools,music,bands,musicians,pop-up,pop up,window,widget
-Requires at least: 2.5
-Tested up to: 2.8.5
-Stable tag: 3.1
+Requires at least: 2.8
+Tested up to: 2.9
+Stable tag: 3.2
 
 This plugin makes it easy to create a simple, modifiable popup window.
 == Description ==
 
 The function of this plugin is to easily create links to simple popup windows.  
-Version 3.1 now supports multiple popup links and window positioning options.  It also has a widget for easy popup pleasure.  Roll it!
+Version 3.2 now supports multiple popup links on posts/pages/widgets and window positioning/centering options.
 
 == Installation ==
 
@@ -31,4 +31,26 @@ Installation for General Use
 
 1. Screenshot of the options menu.
 
-== Arbitrary section ==
+== Changelog ==
+
+= 2.0 =
+* Added scrollbar option.
+* Added widget for displaying links to popups in sidebar.
+* Added template tag to create popup links in theme templates.
+
+= 3.0 =
+* Added support for multiple popups links.
+* Added window positioning options.
+* Removed widget (brought back in version 3.1)
+
+= 3.1 =
+* Brought back widget by popular demand.
+
+= 3.2 =
+* Widget upgraded to support multiple links and window centering option available - contributed by RichH
+
+
+== Upgrade Notice ==
+
+= 3.2 =
+3.2 now has the option of adding multiple popup links listed in a widget and multiple links within a post or page.  3.2 also supports popup centering.
