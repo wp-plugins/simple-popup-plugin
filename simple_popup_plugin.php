@@ -2,13 +2,13 @@
 /*
 Plugin Name: Simple Popup Plugin
 Plugin URI: http://www.grimmdude.com/wordpress-simple-popup-plugin
-Description: This plugin makes it easy to create a simple, modifiable popup window.  Version 4.0 supports multiple popups, window positioning, and a widget that can be installed with multiple instances. Requires WordPress 2.8
-Version: 4.1
+Description: This plugin makes it easy to create a simple, modifiable popup window.  Version 4.0 supports multiple popups, window positioning, and a widget that can be installed with multiple instances.
+Version: 3.3
 Author: Garrett Grimm
 Author URI: http://www.grimmdude.com
 */
 
-/*  Copyright 2009  Garrett Grimm  (email : music@grimmdude.com)
+/*  Copyright 2009  Garrett Grimm  (email : garrett@grimmdude.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -80,7 +80,7 @@ function output_popup_url() {
     return get_option('popup_window_url');
 }
 function popup_plugin_shortcode( $atts, $content = null ) {
-    return "<a href='{$atts['url']}' onClick='return popitup(this.href);' target='_blank'>$content</a>";    
+    return "<a href='{$atts['url']}' onClick='return popitup(this.href);' target='_blank' class='simple_popup_link'>$content</a>";    
 }
 
 //defines tag for theme templates

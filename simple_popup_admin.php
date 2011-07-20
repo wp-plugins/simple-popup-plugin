@@ -1,7 +1,10 @@
 <div class="wrap">
 <h2>Simple Popup Plugin</h2>
+<div class='error'>
+	<p>Looking for a popup that will automatically open when the page is loaded?  Check out <a href="http://www.grimmdude.com/wordpress-simple-auto-delay-popup-plugin/">Simple Auto Delay Popup</a></p>
+</div>
 <small>By <a href="http://www.grimmdude.com" title="www.grimmdude.com" target="_blank">Garrett Grimm</a> and <a href="http://ryowebsite.com/" title="http://ryowebsite.com" target="_blank">Rich Hamilton</a></small>
-<p>This is version 3.2 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback & Help" target="_blank">Feedback & Help</a> |  
+<p>This is version 3.3 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback & Help" target="_blank">Feedback & Help</a> |  
 <a href="http://www.grimmdude.com/donate" title="Donate" target="_blank">Donate</a>
 </p>
 
@@ -64,11 +67,19 @@
 </form>
 
 <h3>Usage</h3>
-<ul><li>-To create a popup link in a post or page use this shortcode: <code>[popup url="http://www.popupurl.com"]Link Text Here[/popup]</code></li>
-<li>-To create a popup link in the sidebar,footer, header, etc. use this template tag: <code>&lt;?php simple_popup_link("http://www.popupurl.com","LINK TEXT HERE"); ?&gt;</code></li>
-<li>-There's also an easy to use widget, so don't forget about it!</li>
-<li><u>**Always use "http://" in your urls</u></li>
-</ul><br />
-<p>
-<i>Written in <a href="http://www.anamericangirlinchina.com" title="My girl's Shanghai blog" target="_blank">Shanghai, China</a>.
+<h4>Shortcode</h4>
+<p>To create a popup link in a post or page use this shortcode:<br /> <code>[popup url="http://www.popupurl.com"]Link Text Here[/popup]</code></p>
+<h4>Template Tag</h4>
+<p>To create a popup link in a particular area of your theme use this template tag:<br />
+<code>&lt;?php simple_popup_link("http://www.popupurl.com","LINK TEXT HERE"); ?&gt;</code></p>
+
+<p>You can use an image as a link with this template tag like so:<br />
+<code>&lt;?php simple_popup_link("http://www.popupurl.com","&lt;img src='http://www.imageurl.com/image.jpg' />"); ?&gt;</code></p>
+<h4>Widget</h4>
+<p>There's also an easy to use widget, so don't forget about it!  <a href="<?php bloginfo('url'); ?>/wp-admin/widgets.php">Find it here.</a></p>
+
+<p><u>**Always use "http://" in your urls</u></p>
+
+<p><i>Written in <a href="http://www.anamericangirlinchina.com" title="My girl's Shanghai blog" target="_blank">Shanghai, China</a>.</i></p>
+<p style="font-size:15px;"><i>If you have any problems or questions please visit <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin/">http://www.grimmdude.com/wordpress-simple-popup-plugin/</a></i></p>
 </div>
