@@ -4,13 +4,15 @@ Donate link: http://www.grimmdude.com/donate/
 Tags: popup,simple,tools,music,bands,musicians,pop-up,pop up,window,widget
 Requires at least: 2.8
 Tested up to: 3.2.1
-Stable tag: 3.3
+Stable tag: 4.0
 
 This plugin makes it easy to create a simple, modifiable popup window.
 == Description ==
 
-The function of this plugin is to easily create links to simple popup windows.  
-Version 3.2 now supports multiple popup links on posts/pages/widgets and window positioning/centering options.
+The function of this plugin is to easily create links to simple popup windows.  It supports multiple popup links on posts/pages/widgets and window positioning/centering options.
+
+NEW to 4.0 - You can now adjust the dimensions of each individual popup using the new shortcode attributes like so:
+[popup url="http://www.popupurl.com" width="400" height="600"]
 
 == Installation ==
 
@@ -24,8 +26,10 @@ Installation for General Use
 
 == Frequently Asked Questions ==
 
-1. To create a popup link in a post or page use `[popup url="http://www.popup-url.com"]Link Text Here[/popup]`
-1. To create a popup link in the sidebar, header, footer, etc. use the template tag `<?php simple_popup_link("http://www.popupurl.com","LINK TEXT HERE"); ?>`
+1. To create a popup link in a post or page use `[popup url="http://www.popup-url.com"]Link Text Here[/popup]`.
+1. You adjust the dimensions of all popups in the options screen, or each individual popup using the width & height attributes within the shortcode, ie `[popup url="http://www.popup-url.com"]LINK TEXT[/popup]`.
+1. If you would like to use the shortcode in a template file simply call it like so: 
+`<?php echo do_shortcode('[popup url="http://popupurl.com']LINK TEXT[/popup]'); ?>`
 
 == Screenshots ==
 
@@ -52,8 +56,11 @@ Installation for General Use
 = 3.3 =
 Added class 'simple_popup_link' to links for styling and fixed some bugs.
 
+= 4.0 =
+Added shortcode attributes for changing the dimensions of each popup window as needed.  Also added the attribute 'class' to the shortcode for adding a custom class to the link if desired.
+
 
 == Upgrade Notice ==
 
-= 3.3 =
-Added class 'simple_popup_link' to links for styling and fixed some bugs.
+= 4.0 =
+Added shortcode attributes for changing the dimensions of each popup window as needed.  Also added the attribute 'class' to the shortcode for adding a custom class to the link if desired.

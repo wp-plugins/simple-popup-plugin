@@ -2,13 +2,13 @@
 /*
 Plugin Name: Simple Popup Plugin
 Plugin URI: http://www.grimmdude.com/wordpress-simple-popup-plugin
-Description: This plugin makes it easy to create a simple, modifiable popup window.  Version 4.0 supports multiple popups, window positioning, and a widget that can be installed with multiple instances.
-Version: 3.3
+Description: This plugin makes it easy to create a simple, modifiable popup window.  Using the shortcode you can create a popup link and set the dimensions of each individual popup.
+Version: 4.0
 Author: Garrett Grimm
 Author URI: http://www.grimmdude.com
 */
 
-/*  Copyright 2009  Garrett Grimm  (email : garrett@grimmdude.com)
+/*  Copyright 2011  Garrett Grimm  (email : garrett@grimmdude.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ function popup_plugin_script(){
     $toolbar=(get_option('popup_window_toolbar')==1) ? "yes" : "no";
     $location=(get_option('popup_window_location')==1) ? "yes" : "no";
     echo "
-<!--Simple Popup Plugin v3.2 / RH Mods-->
+<!--Simple Popup Plugin v4.0 / RH Mods-->
 <script language=\"javascript\" type=\"text/javascript\">
 <!--
 var swin=null;
@@ -64,6 +64,12 @@ add_action ( 'wp_head', 'popup_plugin_script' );
 //Options page
 add_action('admin_menu', 'simple_popup_menu');
 
+//Set option defaults only if option doesn't exist
+add_option('popup_window_width', '500');
+add_option('popup_window_height', '500');
+add_option('popup_window_left', '0');
+add_option('popup_window_top', '0');
+
 function simple_popup_menu() {
     add_options_page('Simple Popup Plugin Options', 'Simple Popup Plugin', 8, __FILE__, 'simple_popup_options');
 }
@@ -80,12 +86,18 @@ function output_popup_url() {
     return get_option('popup_window_url');
 }
 function popup_plugin_shortcode( $atts, $content = null ) {
-    return "<a href='{$atts['url']}' onClick='return popitup(this.href);' target='_blank' class='simple_popup_link'>$content</a>";    
+	extract( shortcode_atts( array(
+		'url' => '',
+		'class' => '',
+		'height' => get_option('popup_window_height'),
+		'width' => get_option('popup_window_width'),
+	), $atts ) );
+    return "<a href='{$url}' onClick='return popitup(this.href, {$width}, {$height});' class='simple_popup_link {$class}'>$content</a>";    
 }
 
 //defines tag for theme templates
 function simple_popup_link($templateurl,$link_text) {
-    echo "<a href='$templateurl' onClick='return popitup(this.href);' target='_blank'>$link_text</a>";    
+    echo "<a href='$templateurl' onClick='return popitup(this.href);'>$link_text</a>";    
 }
 
 /**
@@ -175,5 +187,4 @@ function simple_popup_Widget_init() {
     register_widget('simple_popup_Widget');
 }
 add_action('init', 'simple_popup_Widget_init', 1);
-
 ?>
