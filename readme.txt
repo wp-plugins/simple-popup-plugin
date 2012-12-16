@@ -3,8 +3,8 @@ Contributors: grimmdude, RichH
 Donate link: http://www.grimmdude.com/donate/
 Tags: popup,simple,tools,music,bands,musicians,pop-up,pop up,window,widget
 Requires at least: 2.8
-Tested up to: 3.2.1
-Stable tag: 4.0
+Tested up to: 3.5
+Stable tag: 4.1
 
 This plugin makes it easy to create a simple, modifiable popup window.
 == Description ==
@@ -59,8 +59,10 @@ Added class 'simple_popup_link' to links for styling and fixed some bugs.
 = 4.0 =
 Added shortcode attributes for changing the dimensions of each popup window as needed.  Also added the attribute 'class' to the shortcode for adding a custom class to the link if desired.
 
+= 4.1 =
+Some code fixes and cleanup to ensure compatibility with new Wordpress versions.
 
 == Upgrade Notice ==
 
-= 4.0 =
-Added shortcode attributes for changing the dimensions of each popup window as needed.  Also added the attribute 'class' to the shortcode for adding a custom class to the link if desired.
+= 4.1 =
+Some code fixes and cleanup to ensure compatibility with new Wordpress versions.
