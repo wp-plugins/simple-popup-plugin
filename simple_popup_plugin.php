@@ -3,7 +3,7 @@
 Plugin Name: Simple Popup Plugin
 Plugin URI: http://www.grimmdude.com/wordpress-simple-popup-plugin
 Description: This plugin makes it easy to create a simple, modifiable popup window.  Using the shortcode you can create a popup link and set the dimensions of each individual popup.
-Version: 4.1
+Version: 4.2
 Author: Garrett Grimm
 Author URI: http://www.grimmdude.com
 */
@@ -49,7 +49,7 @@ function popup_plugin_script(){
 	    if (myleft==0 && mytop==0 && pos!="random"){pos="center"};
 	    if (pos=="random"){myleft=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;mytop=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
 	    if (pos=="center"){myleft=(screen.width)?(screen.width-w)/2:100;mytop=(screen.height)?(screen.height-h)/2:100;}
-	    settings="width=" + w + ",height=" + h + ",top=" + mytop + ",left=" + myleft + ",scrollbars=$scrollbar,location=$location,directories=no,status=no,menubar=no,toolbar=$toolbar,resizable=no";swin=window.open(mypage,myname,settings);
+	    settings="width=" + w + ",height=" + h + ",top=" + mytop + ",left=" + myleft + ",scrollbars=<?php echo $scrollbar; ?>,location=<?php echo $location; ?>,directories=no,status=no,menubar=no,toolbar=<?php echo $toolbar; ?>,resizable=no";swin=window.open(mypage,myname,settings);
 	    if (infocus==null || infocus=="front"){swin.focus()};
 	    return false;
 	}

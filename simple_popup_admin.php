@@ -4,7 +4,7 @@
 		<p>Looking for a popup that will automatically open when the page is loaded?  Check out <a href="http://www.grimmdude.com/wordpress-simple-auto-delay-popup-plugin/?utm_source=simple-popup&amp;utm_medium=wordpress&amp;utm_campaign=simple-popup" target="_blank">Simple Auto Delay Popup</a></p>
 	</div>
 	<p>
-		This is version 4.0 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback &amp; Help" target="_blank">Feedback &amp; Help</a> |  
+		This is version 4.2 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback &amp; Help" target="_blank">Feedback &amp; Help</a> |  
 		<a href="http://www.grimmdude.com/donate" title="Donate" target="_blank">Donate</a>
 	</p>
 	<small>By <a href="http://www.grimmdude.com" title="www.grimmdude.com" target="_blank">Garrett Grimm</a> and <a href="http://ryowebsite.com/" title="http://ryowebsite.com" target="_blank">Rich Hamilton</a></small>

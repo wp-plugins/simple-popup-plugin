@@ -4,15 +4,14 @@ Donate link: http://www.grimmdude.com/donate/
 Tags: popup,simple,tools,music,bands,musicians,pop-up,pop up,window,widget
 Requires at least: 2.8
 Tested up to: 3.5
-Stable tag: 4.1
+Stable tag: 4.2
 
 This plugin makes it easy to create a simple, modifiable popup window.
 == Description ==
 
 The function of this plugin is to easily create links to simple popup windows.  It supports multiple popup links on posts/pages/widgets and window positioning/centering options.
 
-NEW to 4.0 - You can now adjust the dimensions of each individual popup using the new shortcode attributes like so:
-[popup url="http://www.popupurl.com" width="400" height="600"]
+NEW to 4.2 - Fixed issue of toolbar/scrollbar/location bar options not working correctly.
 
 == Installation ==
 
@@ -62,7 +61,10 @@ Added shortcode attributes for changing the dimensions of each popup window as n
 = 4.1 =
 Some code fixes and cleanup to ensure compatibility with new Wordpress versions.
 
+= 4.2 =
+Fixed issue of toolbar/scrollbar/location bar options not working correctly.
+
 == Upgrade Notice ==
 
-= 4.1 =
-Some code fixes and cleanup to ensure compatibility with new Wordpress versions.
+= 4.2 =
+Fixed issue of toolbar/scrollbar/location bar options not working correctly.
