@@ -1,6 +1,6 @@
 === Simple Popup Plugin ===
 Contributors: RichH
-Tags: email popup,aweber,mailchimp,tools,widget,email newsletter,pop-up,pop up,widget, subscribers, scroll box, lightbox, scrollbar,email, leadpages, leadgen, content upgrades, window, simple
+Tags: email popup,aweber,mailchimp,tools,widget,email newsletter,pop-up,pop up,widget, subscribers, scroll box, lightbox, scrollbar,email, leadpages, leadgen, content upgrades, window, simple, shortcode
 Requires at least: 2.8
 Tested up to: 4.2
 Stable tag: 4.2
