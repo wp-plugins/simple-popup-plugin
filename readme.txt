@@ -1,17 +1,20 @@
 === Simple Popup Plugin ===
-Contributors: grimmdude, RichH
-Donate link: http://www.grimmdude.com/donate/
-Tags: popup,simple,tools,music,bands,musicians,pop-up,pop up,window,widget
+Contributors: RichH
+Tags: email popup,aweber,mailchimp,tools,widget,email newsletter,pop-up,pop up,widget, subscribers, scroll box, lightbox, scrollbar,email, leadpages, leadgen, content upgrades, window, simple
 Requires at least: 2.8
-Tested up to: 3.5
+Tested up to: 4.2
 Stable tag: 4.2
 
 This plugin makes it easy to create a simple, modifiable popup window.
+
 == Description ==
+
+[**To get a Email Collection popup and more, go here!**](http://bit.ly/1zqOXPs)
 
 The function of this plugin is to easily create links to simple popup windows.  It supports multiple popup links on posts/pages/widgets and window positioning/centering options.
 
-NEW to 4.2 - Fixed issue of toolbar/scrollbar/location bar options not working correctly.
+
+
 
 == Installation ==
 

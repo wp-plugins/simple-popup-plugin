@@ -1,13 +1,16 @@
 <div class="wrap">
 	<h2>Simple Popup Plugin</h2>
 	<div class='error'>
-		<p>Looking for a popup that will automatically open when the page is loaded?  Check out <a href="http://www.grimmdude.com/wordpress-simple-auto-delay-popup-plugin/?utm_source=simple-popup&amp;utm_medium=wordpress&amp;utm_campaign=simple-popup" target="_blank">Simple Auto Delay Popup</a></p>
+		<p>Looking for a popup that is on steroids?  Check out the <a href="https://wordpress.org/plugins/sumome" target="_blank">SumoMe plugin</a>!</p>
 	</div>
 	<p>
-		This is version 4.2 <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin" title="Feedback &amp; Help" target="_blank">Feedback &amp; Help</a> |  
-		<a href="http://www.grimmdude.com/donate" title="Donate" target="_blank">Donate</a>
+		This is version 4.2 <a target="_blank" href="https://wordpress.org/plugins/simple-popup-plugin/">Please leave a review</a>
 	</p>
-	<small>By <a href="http://www.grimmdude.com" title="www.grimmdude.com" target="_blank">Garrett Grimm</a> and <a href="http://ryowebsite.com/" title="http://ryowebsite.com" target="_blank">Rich Hamilton</a></small>
+	<h3>Easy setup</h3>
+	<p>
+		To create a popup link in a post or page use this shortcode:<br /> 
+		<code>[popup url="http://www.popupurl.com"]Link Text Here[/popup]</code>
+	</p>
 	<form method="post" action="options.php">
 		<?php wp_nonce_field('update-options'); ?>
 
@@ -113,15 +116,10 @@
 		You can use an image as a link in a template file like so:<br />
 		<code>&lt;?php echo do_shortcode('[popup url="http://popupurl.com']&lt;img src='http://www.imageurl.com/image.jpg' />[/popup]'); ?&gt;</code>
 	</p>
-	<h3>Widget</h3>
-	<p>
-		There's also an easy to use widget, so don't forget about it!  <a href="<?php bloginfo('url'); ?>/wp-admin/widgets.php">Find it here.</a>
+	 <h3>Widget</h3>
+ 	<p>
+	   There's also an easy to use widget, so don't forget about it!  <a href="<?php bloginfo('url'); ?>/wp-admin/widgets.php">Find it here.</a>
 	</p>
-	<p><u>**Always use "http://" in your urls</u></p>
-	<p>
-		<i>If you have any problems or questions please visit <a href="http://www.grimmdude.com/wordpress-simple-popup-plugin/">http://www.grimmdude.com/wordpress-simple-popup-plugin/</a></i>
-	</p>
-	<p>
-		<i>Written in <a href="http://en.wikipedia.org/wiki/Shanghai" target="_blank">Shanghai, China</a>.</i>
-	</p>
+	<p><em>Have a great day!</em></p>
+
 </div>
