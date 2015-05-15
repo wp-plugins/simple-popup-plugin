@@ -70,6 +70,7 @@
 	<form method="post" action="options.php">
 		<?php wp_nonce_field('update-options'); ?>
 
+		<h2>Shortcode Settings</h2>
 		<h3>Dimensions</h3>
 		<p class="description">
 			All popup windows (except modals) will use these dimensions unless you specify new ones in the shortcode<br />
