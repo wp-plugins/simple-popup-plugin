@@ -89,7 +89,15 @@ Some code fixes and cleanup to ensure compatibility with new Wordpress versions.
 = 4.2 =
 Fixed issue of toolbar/scrollbar/location bar options not working correctly.
 
+= 4.3 =
+
+Added auto pop up
+
 == Upgrade Notice ==
+
+= 4.3 =
+
+Added auto pop up
 
 = 4.2 =
 Fixed issue of toolbar/scrollbar/location bar options not working correctly.
