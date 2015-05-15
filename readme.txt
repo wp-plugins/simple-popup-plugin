@@ -4,7 +4,7 @@ Donate link: http://www.grimmdude.com/donate/
 Tags: popup,simple,tools,music,bands,musicians,pop-up,pop up,window,widget
 Requires at least: 2.8
 Tested up to: 3.5
-Stable tag: 4.2
+Stable tag: 4.3
 
 This plugin makes it easy to create a simple, modifiable popup window.
 == Description ==
